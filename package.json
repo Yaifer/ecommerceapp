@@ -1,7 +1,7 @@
 {
   "name": "ecommerceapp",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://yaifer.github.io/ecommerceapp",
   "dependencies": {
     "@aws-amplify/ui-react": "^2.15.8",
