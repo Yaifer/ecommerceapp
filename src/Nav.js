@@ -5,17 +5,17 @@ import { HomeOutlined, UserOutlined, ProfileOutlined } from '@ant-design/icons'
 import { Hub } from 'aws-amplify'
 import { checkUser } from './checkUser'
 
-const Nav = ({ current }) => {
-  const { current } = props
-  const [user, updateUser] = useState({})
+export const Nav = () => {
+  const [user, updateUser] = useState({});
+  
   useEffect(() => {
     checkUser(updateUser)
     Hub.listen('auth', (data) => {
       const { payload: { event } } = data;
       console.log('event: ', event)
-      if (event === 'signIn' || event === 'signOut') checkUser(updateUser)
+      if (event === 'signIn' || event === 'signOut') { checkUser(updateUser); }
     })
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -42,4 +42,4 @@ const Nav = ({ current }) => {
       </Menu>
     </div>
   )
-}
+};
