@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu } from 'antd'
 import { HomeOutlined, UserOutlined, ProfileOutlined } from '@ant-design/icons'
 import { Hub } from 'aws-amplify'
 import { checkUser } from './checkUser'
 
 export const Nav = () => {
+
+    const loc = useLocation();
+    console.log(loc);
+    const splitLoc = loc.pathname.split("/");
+    console.log(splitLoc);
+    const key = splitLoc[1] && splitLoc[1].length > 0 ? splitLoc[1] : "home";
+    console.log(key);
+
   const [user, updateUser] = useState({});
   
   useEffect(() => {
@@ -19,7 +27,7 @@ export const Nav = () => {
 
   return (
     <div>
-      <Menu selectedKeys={[current]} mode="horizontal">
+      <Menu selectedKeys={[key]} mode="horizontal">
         <Menu.Item key='home'>
           <Link to={`/`}>
             <HomeOutlined />Home
