@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container } from './Container';
 import { API } from 'aws-amplify';
 import { List } from 'antd';
-import checkUser from './checkUser';
+import { checkUser } from './checkUser';
 
 export const Main = () => {
   const [state, setState] = useState({products: [], loading: true})
